@@ -1,0 +1,18 @@
+services:
+  hugo:
+    image: floryn90/hugo:latest
+    command: server --bind 0.0.0.0 --baseURL http://localhost:8080 --noBuildLock --renderToMemory --watch
+    environment:
+      HUGO_CACHEDIR: /tmp/hugo-cache
+    volumes:
+      - .:/src:ro
+    working_dir: /src
+
+  nginx:
+    image: nginxinc/nginx-unprivileged:latest
+    depends_on:
+      - hugo
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro

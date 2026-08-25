@@ -1,8 +1,42 @@
-+++
-title = 'Travels and Adventures'
-date = 2024-05-22
-draft = false
-+++
+---
+title: "toozej links"
+name: "toozej"
+description: "A few places to find me online."
+socials:
+  - url: "https://github.com/toozej"
+    icon: "fab fa-github"
+  - url: "https://fosstodon.org/@toozej"
+    icon: "fab fa-mastodon"
+  - url: "https://bsky.app/profile/toozej"
+    icon: "fab fa-bluesky"
 
-Travel diaries and photos from recent trips.
-
+links:
+  - href: "https://toozej.com"
+    icon: "fas fa-house"
+    title: "toozej.com"
+    description: "Homepage"
+  - href: "https://travels.toozej.com"
+    icon: "fas fa-plane"
+    title: "Travels"
+    description: "travels.toozej.com"
+  - href: "https://trails.toozej.com"
+    icon: "fas fa-person-hiking"
+    title: "Trails"
+    description: "trails.toozej.com"
+  - href: "https://photos.toozej.com"
+    icon: "fas fa-camera"
+    title: "Photography"
+    description: "photos.toozej.com"
+  - href: "https://github.com/toozej/toozej"
+    icon: "fab fa-github"
+    title: "GitHub"
+    description: "About me repository"
+  - href: "https://fosstodon.org/@toozej"
+    icon: "fab fa-mastodon"
+    title: "Fosstodon"
+    description: "@toozej"
+  - href: "https://bsky.app/profile/toozej"
+    icon: "fab fa-bluesky"
+    title: "Bluesky"
+    description: "@toozej"
+---

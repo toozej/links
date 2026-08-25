@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <div class="bg-animation" id="bgAnimation"></div>
+    <main class="container mx-auto px-4 py-12 max-w-md">
+      {{ partial "profile.html" . }}
+      {{ partial "link-card.html" . }}
+      <footer class="text-center text-xs opacity-60">© {{ now.Year }} toozej</footer>
+    </main>
+    <script src="{{ "js/script.js" | relURL }}"></script>
+  </body>
+</html>

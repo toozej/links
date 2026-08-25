@@ -1,16 +1,12 @@
-baseURL = 'https://travels.toozej.com'
-languageCode = 'en-us'
-title = 'Travels and Adventures'
-theme = ['newsroom', 'gpx-shortcode']
+baseURL = "https://toozej.github.io/links/"
+locale = "en-us"
+title = "toozej links"
+theme = "LucentLink-Hugo"
 enableRobotsTXT = true
-pagination.pagerSize = 30
-
-[taxonomies]
-tag = 'tags'
-category = 'categories'
+disableKinds = ["taxonomy", "term"]
 
 [params]
-rss = true
-blogDir = "blog"
-logo = "" # if the value is an empty string, the site title will be shown instead
-faviconsDir = "images/fav/" # with a trailing slash
+  description = "Links for toozej"
+
+[outputs]
+  home = ["HTML"]
