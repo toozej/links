@@ -2,10 +2,14 @@
   {{ range .Params.links }}
     <a href="{{ .href }}" class="block link-card p-4 flex items-center" target="_blank" rel="noopener">
       <div class="w-10 h-10 flex items-center justify-center mr-4">
-        {{ with .iconImage }}
-          <img src="{{ . }}" alt="" class="w-7 h-7 object-contain" loading="lazy">
+        {{ with .emoji }}
+          <span class="text-2xl" role="img" aria-label="{{ . }}">{{ . }}</span>
         {{ else }}
-          <i class="{{ .icon }} icon text-xl" aria-hidden="true"></i>
+          {{ with .iconImage }}
+            <img src="{{ . }}" alt="" class="w-7 h-7 object-contain" loading="lazy">
+          {{ else }}
+            <i class="{{ .icon }} icon text-xl" aria-hidden="true"></i>
+          {{ end }}
         {{ end }}
       </div>
       <div>
