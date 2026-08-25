@@ -1,8 +1,15 @@
 ---
-# from https://github.com/goreleaser/nfpm/blob/main/.github/dependabot.yml
 version: 2
+multi-ecosystem-groups:
+  combined:
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    commit-message:
+      prefix: chore
+      include: scope
 updates:
-  # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -12,8 +19,19 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
-    commit-message:
-      prefix: "chore(deps)"
+    patterns:
+      - "*"
+    multi-ecosystem-group: combined
+  - package-ecosystem: "docker"
+    directory: "/"
+    cooldown:
+      default-days: 7
+    labels:
+      - dependencies
+      - docker
+    patterns:
+      - "*"
+    multi-ecosystem-group: combined
   - package-ecosystem: "devcontainers"
     directory: "/"
     schedule:
@@ -23,6 +41,16 @@ updates:
     labels:
       - "dependencies"
       - "devcontainers"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
+    patterns:
+      - "*"
+    multi-ecosystem-group: combined
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    cooldown:
+      default-days: 7
+    labels:
+      - dependencies
+      - pre-commit
+    patterns:
+      - "*"
+    multi-ecosystem-group: combined

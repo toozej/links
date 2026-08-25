@@ -1,0 +1,42 @@
+---
+name: Update Hugo version
+
+on:
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - id: version
+        name: Check the latest Hugo release
+        run: |
+          latest=$(curl --fail --silent https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name | ltrimstr("v")')
+          current=$(sed -nE 's/^  HUGO_VERSION: ([0-9.]+)$/\1/p' .github/workflows/hugo.yaml)
+          test -n "$latest"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+      - name: Update Hugo references
+        if: steps.version.outputs.current != steps.version.outputs.latest
+        env:
+          CURRENT: ${{ steps.version.outputs.current }}
+          LATEST: ${{ steps.version.outputs.latest }}
+        run: |
+          sed -i "s/$CURRENT/$LATEST/g" .github/workflows/hugo.yaml .devcontainer/devcontainer.json
+      - name: Create update pull request
+        if: steps.version.outputs.current != steps.version.outputs.latest
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: chore/update-hugo
+          delete-branch: true
+          commit-message: "chore(deps): update Hugo to ${{ steps.version.outputs.latest }}"
+          title: "chore(deps): update Hugo to ${{ steps.version.outputs.latest }}"
+          body: "Updates Hugo in the deployment workflow and Codespaces devcontainer."
+          labels: dependencies

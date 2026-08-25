@@ -1,0 +1,30 @@
+---
+name: Update LucentLink theme
+
+on:
+  schedule:
+    - cron: "29 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          submodules: recursive
+      - name: Update the LucentLink submodule
+        run: git submodule update --remote themes/LucentLink-Hugo
+      - name: Create update pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: chore/update-lucentlink-theme
+          delete-branch: true
+          commit-message: "chore(deps): update LucentLink theme"
+          title: "chore(deps): update LucentLink theme"
+          body: "Updates the LucentLink-Hugo theme submodule to its latest upstream commit."
+          labels: dependencies

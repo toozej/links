@@ -1,13 +1,25 @@
 {
     "name": "Hugo",
-    "forwardPorts": [
-        1313
-    ] ,
+    "forwardPorts": [1313, 8080],
     "image": "mcr.microsoft.com/devcontainers/base:bookworm",
     "features": {
         "ghcr.io/devcontainers/features/hugo:1": {
             "version": "0.165.0",
             "extended": true
+        },
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/git-lfs:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "tamasfe.even-better-toml",
+                "redhat.vscode-yaml",
+                "yzhang.markdown-all-in-one"
+            ]
         }
     },
     "postCreateCommand": "git submodule update --init --recursive"
