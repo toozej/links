@@ -31,4 +31,8 @@ links:
     emoji: "🥾"
     title: "Trails"
     description: "trails.toozej.com"
+  - href: "https://tools.toozej.com/homepage/"
+    emoji: "🔨"
+    title: "tools"
+    description: "tools.toozej.com"
 ---
