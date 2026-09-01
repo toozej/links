@@ -1,7 +1,9 @@
+---
 services:
   hugo:
     image: floryn90/hugo:latest
-    command: server --bind 0.0.0.0 --baseURL http://localhost:8080 --noBuildLock --renderToMemory --watch
+    command: server --bind 0.0.0.0 --baseURL http://localhost:8080 --noBuildLock --renderToMemory
+      --watch
     environment:
       HUGO_CACHEDIR: /tmp/hugo-cache
     volumes:
