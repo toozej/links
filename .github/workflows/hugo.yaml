@@ -3,7 +3,7 @@
 name: Deploy Hugo site to Pages
 
 env:
-  HUGO_VERSION: 0.166.0
+  HUGO_VERSION: 0.167.0
 
 on:
   # Runs on pushes targeting the default branch
